@@ -27,7 +27,7 @@ docker container exec -it sampleDb bash
 mongosh mongodb://admin:867@localhost:27000
 ```
 
-Create user for only Customers database
+After connecting with root user to mongoDb. Create user for only Customers database
 
 ```bash
 use customers
