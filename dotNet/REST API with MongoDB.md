@@ -17,25 +17,25 @@ I've used vs code instead of visual studio. so for vs code following things need
 
 ## Process to follow
 
-#### 1. Create the ASP.NET Core web API project
+### 1. Create the ASP.NET Core web API project
 ```bash
 dotnet new webapi -o BookStoreApi
 code BookStoreApi
 ```
 The preceding commands generate a new ASP.NET Core web API project and then open the project in Visual Studio Code.
 
-#### 2. Add Required assets to build and debug
+### 2. Add Required assets to build and debug
 
 Once the OmniSharp server starts up , a dialog asks `Required assets to build and debug are missing from 'BookStoreApi'. Add them?`. Select `Yes`.
 
-#### 3. Add MongoDB driver 
+### 3. Add MongoDB driver 
 
 Open the Integrated Terminal and run the following command to install the .NET driver for MongoDB.
 ```bash
 dotnet add package MongoDB.Driver
 ```
 
-#### 4. Add Entity Model
+### 4. Add Entity Model
 
 Add  required model classes into **Models** directory to the project root. Here is an example.
 ```bash
@@ -60,7 +60,7 @@ public class Book
     public string Author { get; set; } = null!;
 }
 ```
-**5. Add Database configuration
+### 5. Add Database configuration
 
 Add `DatabaseConnection` value into the `appsettings.json` file.
 
@@ -80,7 +80,7 @@ Add `DatabaseConnection` value into the `appsettings.json` file.
   }
 }
 ```
-#### 6. Add a `DatabaseSettings` class to the `Models` directory
+### 6. Add a `DatabaseSettings` class to the `Models` directory
 
 ```bash
 namespace RestApiWithMongoDb.Models;
@@ -94,7 +94,7 @@ public class DatabaseSettings
 ```
 The preceding `DatabaseSettings` class is used to store the appsettings.json file's `DatabaseConnection` property values. The JSON and C# property names are kept same for the mapping process.
 
-#### 7. Add following code to `Program.cs`
+### 7. Add following code to `Program.cs`
 
 ```bash
 var builder = WebApplication.CreateBuilder(args);
@@ -108,7 +108,7 @@ builder.Services.AddSingleton<IMongoDatabase>(option=>{
 ```
 Here, the `DatabaseSettings` object's `ConnectionString` property is populated with the `DatabaseConnection : ConnectionString` property in appsettings.json.
 
-#### 8. Add CRUD operations services
+### 8. Add CRUD operations services
 
 Add a `BooksService` class to the **Services** directory with the following code:
 
@@ -145,7 +145,7 @@ public class BooksService
 }
 ```
 
-#### 9. Add the following highlighted code to `Program.cs`
+### 9. Add the following highlighted code to `Program.cs`
 
 Put the following code under number 7 code.
 ```bash
@@ -154,7 +154,7 @@ Put the following code under number 7 code.
 builder.Services.AddSingleton<BooksService>();
 ```
 
-#### 10. Add a `BooksController` class to the `Controllers` directory
+### 10. Add a `BooksController` class to the `Controllers` directory
 ```bash
 using RestApiWithMongoDb.Models;
 using RestApiWithMongoDb.Services;
