@@ -1,7 +1,7 @@
 
 # Quick Start a ReactJS app
 
-This repo is consist of some quick start docs that we need when we start a new ReactJS project.
+This repo is consist of some quick start docs that we need when we start a new ReactJS project. Besides react there are some necessary libraries that we need while working on React.
 
 
 
