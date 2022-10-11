@@ -1,5 +1,5 @@
 
-# Create a new user with root access in linux(ubuntu)
+# Create a new user with root access in linux(ubuntu) VPS
 
 Initial Login and create new user and give root permission.
 
