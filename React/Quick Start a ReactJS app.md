@@ -353,6 +353,7 @@ npm install formik --save
 npm install yup --save
 ```
 In ***LeaveEntry.jsx*** do the follwing changes to add formik and Yup code.
+Here on submit we just print the form value on console.
 ```bash
 import React from 'react'
 import { CancelButton, SaveButton } from '../../components/form-field/FormButton'
