@@ -1,5 +1,5 @@
 
-# Create React-Firebase Project with Authentication
+# Create React-Firebase CRUD Project with Authentication
 
 A brief description of how to create a react Firebase project with Firebase Authentication.
 
