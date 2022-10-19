@@ -4,16 +4,21 @@
 ---
 2. Heading 
 ```markdown
-# heading 1
-## heading 2
-...
-###### heading 6
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
 ```
 Preview:
-# heading 1
-## heading 2
-...
-###### heading 6
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+
 ***
 3. Italic
 ```markdown
@@ -28,7 +33,7 @@ _Italic_
 ```
 Preview: **strong/bond**
 ***
-5. strikethrough
+5. Strikethrough 
 ```md
 ~~stringthrough~~ 
 ```
@@ -76,7 +81,7 @@ Preview:
  |---|---|---|
  |Nayeem|30|999999|
 
- 11. Quotes
+ 11. Blockquote 
 
  ```md
  > Never Settle
@@ -102,14 +107,16 @@ preview:
     2. Two
 ***
 
-13. Horizontal Line (both will work)
+13. Horizontal Line (all 3 will work)
 ```bash
 ***
 ---
+___
 ```
 Preview: 
 ***
 ---
+___
 14. Task list
 ```md
 <!-- Task List -->
