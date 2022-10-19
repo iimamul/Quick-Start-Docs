@@ -88,14 +88,18 @@ Preview:
 ```md
 - One
 - Two
-  1. One
-  2. Two
+1. One
+2. Two
+    1. One
+    2. Two
 ```
 preview:
 - One
 - Two
-  1. One
-  2. Two
+1. One
+2. Two
+    1. One
+    2. Two
 ***
 
 13. Horizontal Line (both will work)
@@ -106,6 +110,18 @@ preview:
 Preview: 
 ***
 ---
-
+14. Task list
+```md
+<!-- Task List -->
+* [x] Task 1
+* [x] Task 2
+* [ ] Task 3
+```
+Preview:
+<!-- Task List -->
+* [x] Task 1
+* [x] Task 2
+* [ ] Task 3
 # Acknowledgement
 - [YT video](https://youtu.be/bpdvNwvEeSE 'Hitesh')
+- [Github gist](https://gist.github.com/bradtraversy/547a7bbf35ffba1561706e161a50b05a)
