@@ -229,7 +229,9 @@ public class BooksController : ControllerBase
     }
 }
 ```
+***
 > For any unwanted error in vscode press `Ctrl+Shift+P` to open Command palette. Search for `Restart OmniSharp`and hit enter.
+***
 
 ## Acknowledgements
 
