@@ -1,7 +1,7 @@
 
 # ASP.NET 6 Web API With And MySQL
 
-A brief description of what this project does and who it's for
+A brief description of how to create a .net web api project with mysql and necessary dependency.
 
 
 ## Project Preparation
