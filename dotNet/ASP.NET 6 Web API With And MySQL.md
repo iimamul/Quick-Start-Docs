@@ -45,9 +45,52 @@ builder.Services.AddEntityFrameworkMySQL().AddDbContext<dotnetapiContext>(option
 });
 ```
 8. Now add a api controller using the model and run the application.
+9. Create `UserDTO` model inside `DTO` folder to get and return user request instead of model classes. 
+10. To map data automatically from `User` model data into `UserDTO` we can use `AutoMapper`. Install Automapper and Automapper extension for dependency injection in `program.cs`
+- AutoMapper
+- AutoMapper.Extensions.Microsoft.DependencyInjection
+11. Add `MappingProfile.cs` class inside MappingProfiles Folder.
+```cs
+using AutoMapper;
+using dotNetWithMySqlAPI.DTO;
+using dotNetWithMySqlAPI.Entities;
 
+namespace dotNetWithMySqlAPI.MappingProfiles
+{
+    public class MappingProfile:Profile
+    {
+        public MappingProfile()
+        {
+            CreateMap<User, UserDTO>();
+        }
+    }
+}
+```
+12. For dependency injection add this services in `Program.cs`
+```cs
+//Automapper 
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+```
+13. Now add the following code in the controller.
+```cs
+private readonly dotnetapiContext _context;
+private readonly IMapper _mapper;
+public UsersController(dotnetapiContext context, IMapper mapper )
+{
+    _context = context;
+    _mapper = mapper;
+}
+
+[HttpGet]
+public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
+{
+    var users = await _context.Users.ToListAsync();
+    return _mapper.Map<List<User>,List<UserDTO>>(users);
+}
+```
 
 ## Acknowledgements
 
  - [webapi blog](https://www.c-sharpcorner.com/article/rest-api-with-asp-net-6-and-mysql/)
+ - [Automapper](https://youtu.be/39I1-wwbF7A)
  
