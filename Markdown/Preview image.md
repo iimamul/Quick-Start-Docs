@@ -1,5 +1,5 @@
 ## Add file from dropbox
-* * *
+
 ### Add file from google drive
 1. Right click and Share the image.
 2. Click `Advanced` and change the `Who can access` option to `Public on the web - Anyone on the Internet`.
