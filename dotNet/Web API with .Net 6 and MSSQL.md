@@ -18,7 +18,7 @@ Install-Package Microsoft.EntityFrameworkCore.Tools
 ### ---Creating db context and Models from DB to Models Folder---
 
 ```bash
-Scaffold-DbContext "Server=192.168.4.9;Database=ToDoDb;User Id=sa;Password=sql@123;Trusted_Connection=True; Integrated Security=False;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+Scaffold-DbContext "Server=192.168.4.9;Database=ToDoDb;User Id=sa;Password=sql@123;Trusted_Connection=True; TrustServerCertificate=True; Integrated Security=False;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
 ```
 
 ### ---Add Connection string in AppSettings---
