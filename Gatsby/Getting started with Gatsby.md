@@ -1,7 +1,7 @@
 
 # Getting started with Gatsby
 
-A brief description of Gatsby quick start following this [tutorial](https://youtube.com/playlist?list=PL4cUxeGkcC9hw1g77I35ZivVLe8k2nvjB).
+Gatsby is a static site generator. A static site generator is a software application that creates HTML pages from templates or components and a given content source. Here is a brief description of Gatsby quick start following this [tutorial](https://youtube.com/playlist?list=PL4cUxeGkcC9hw1g77I35ZivVLe8k2nvjB).
 
 
 ## Process
