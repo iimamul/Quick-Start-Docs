@@ -1,4 +1,3 @@
-## Add file from dropbox
 
 ### Add file from google drive
 1. Right click and Share the image.
