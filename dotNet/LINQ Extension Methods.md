@@ -40,9 +40,6 @@ IEnumerable<int> collection = [1, 2, 3, 4, 5];
 collection.Dump(); //Output: 1 2 3 4 5
 ```
 
-Output:
-![[Pasted image 20240224191059.png]]
-
 ## Filtering Method
 
 ### Where
@@ -207,9 +204,6 @@ IEnumerable<int> collection = [1, 2, 3, 4, 5, 6];
 collection.Chunk(3).Dump(); // Output: [[1,2,3],[4,5,6]]
 ```
 
-Output:
-![[Pasted image 20240225005008.png]]
-
 ## Existence or Quantity Check
 
 > **Immediate Execution** executes immediately where we write them.
@@ -255,9 +249,6 @@ IEnumerable<int> collection = [1, 2, 3, 4, 5, 6];
 collection.Append(7).Dump(); // Output: 1 2 3 4 5 6 7
 collection.Prepend(7).Dump(); // Output: 7 1 2 3 4 5 6
 ```
-
-Output:
-![[Pasted image 20240225011655.png]]
 
 ## Aggregation Methods
 
@@ -315,8 +306,6 @@ people.MaxBy(x => x.Age).Dump(); // Output: Max Age object which is {"Sanda", 12
 
 record Person(string Name, int Age);
 ```
-
-![[Pasted image 20240225025234.png]]
 
 ### Min (Immediate Execution)
 
@@ -498,10 +487,6 @@ collection.ToDictionary(key => key, value => value).Dump(); //Output: Dictionary
 collection.ToHashSet().Dump(); //Output: HashSet
 ```
 
-Output:
-![[Pasted image 20240225150916.png]]
-![[Pasted image 20240225151053.png]]
-
 ### ToLookup (Immediate Execution)
 
 It'll give a lookup table based on the parameter
@@ -518,9 +503,6 @@ peoples.ToLookup(x => x.Age)[19].Single().Name.Dump(); // Output: "Khabib"
 
 record Person(string Name, int Age);
 ```
-
-Output:
-![[Pasted image 20240225152138.png]]
 
 ## Generation Methods
 
