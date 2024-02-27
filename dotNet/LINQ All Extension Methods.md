@@ -751,3 +751,131 @@ collection1.Reverse().Dump(); //Output: 3 2 1
 ```
 
 ## Parallel LINQ (PLINQ)
+
+It's an implementation of LINQ that runs in parallel.
+
+### AsParallel
+
+It will try to use all available core in the physical device to run task parallelly.
+
+```cs
+using System.Diagnostics;
+using System.Numerics;
+// Generate a large array of integers
+int[] numbers = Enumerable.Range(1, 10000000).ToArray();
+
+// Sequential calculation
+Stopwatch sequentialTimer = Stopwatch.StartNew();
+BigInteger sequentialSumOfSquares = numbers.Select(x => BigInteger.Pow(x, 2)).Aggregate(BigInteger.Add);
+sequentialTimer.Stop();
+
+Console.WriteLine($"Sequential sum of squares: {sequentialSumOfSquares}"); //Sequential sum of squares: 333333383333335000000
+Console.WriteLine($"Sequential time: {sequentialTimer.ElapsedMilliseconds} ms"); //Sequential time: 1882 ms
+
+// Parallel calculation
+Stopwatch parallelTimer = Stopwatch.StartNew();
+BigInteger parallelSumOfSquares = numbers.AsParallel().Select(x => BigInteger.Pow(x, 2)).Aggregate(BigInteger.Add);
+parallelTimer.Stop();
+
+Console.WriteLine($"Parallel sum of squares: {parallelSumOfSquares}"); //Parallel sum of squares: 333333383333335000000
+Console.WriteLine($"Parallel time: {parallelTimer.ElapsedMilliseconds} ms"); //Parallel time: 624 ms
+```
+
+Ref: [[dotNet BigInteger]]
+Here we can see the using `AsParallel` changes execution time significantly.
+
+**Code Explanation:**
+
+```cs
+BigInteger parallelSumOfSquares = numbers.AsParallel().Select(x => BigInteger.Pow(x, 2)).Aggregate(BigInteger.Add);
+```
+
+1. **Parallelization with `AsParallel()`**:
+   - `numbers.AsParallel()` converts the array of integers `numbers` into a parallel query. This allows the subsequent LINQ operations to be executed in parallel, leveraging multiple threads.
+2. **`Select` to Square Each Element**:
+   - `Select(x => BigInteger.Pow(x, 2))` applies the function `BigInteger.Pow(x, 2)` to each element `x` of the parallel query.
+   - `BigInteger.Pow(x, 2)` calculates the square of each integer `x`, producing a sequence of squared values.
+3. **`Aggregate` to Compute the Sum**:
+   - `Aggregate(BigInteger.Add)` computes the sum of the squared values produced by the `Select` operation.
+   - `BigInteger.Add` is used as the aggregation function, adding each squared value to the running sum.
+
+### AsSequential
+
+This is opposite of `AsParallel`. `AsSequential` This will allow parallel code run sequential.
+
+### WithDegreeOfParallelism
+
+`WithDegreeOfParallelism(2)` means this code will use maximum two threads.
+
+```cs
+BigInteger parallelSumOfSquares = numbers
+                                .AsParallel()
+                                .WithDegreeOfParallelism(2)
+                                .Select(x => BigInteger.Pow(x, 2))
+                                .Aggregate(BigInteger.Add);
+```
+
+### AsOrdered, AsUnordered
+
+Get output as ordered or unordered
+
+```cs
+BigInteger parallelSumOfSquares = numbers
+                                .AsParallel()
+                                .AsUnordered()
+                                .WithDegreeOfParallelism(2)
+                                .Select(x => BigInteger.Pow(x, 2))
+                                .Aggregate(BigInteger.Add);
+```
+
+### ParallelEnumerable.Range
+
+Instead of this code
+
+```cs
+BigInteger parallelSumOfSquares = Enumerable.Range(1, 10000000)
+                                .AsParallel()
+                                .AsUnordered()
+                                .WithDegreeOfParallelism(2)
+                                .Select(x => BigInteger.Pow(x, 2))
+                                .Aggregate(BigInteger.Add);
+```
+
+We can call parallel range code. This will create a Parallel Enumerable Range.
+
+```cs
+BigInteger parallelSumOfSquares = ParallelEnumerable.Range(1, 10000000)
+                                .AsUnordered()
+                                .WithDegreeOfParallelism(2)
+                                .Select(x => BigInteger.Pow(x, 2))
+                                .Aggregate(BigInteger.Add);
+```
+
+### ParallelEnumerable.Repeat
+
+This will repeat 1, 10 times
+
+```cs
+BigInteger parallelSumOfSquares = ParallelEnumerable.Repeat(1, 10)
+                                .WithDegreeOfParallelism(2)
+                                .Select(x => BigInteger.Pow(x, 2))
+                                .Aggregate(BigInteger.Add);
+```
+
+### ParallelEnumerable.Empty
+
+`ParallelEnumerable.Empty` this will initiate an empty enumerable.
+
+```cs
+BigInteger parallelSumOfSquares = ParallelEnumerable.Empty<int>()
+                                .Select(x => BigInteger.Pow(x, 2))
+                                .Aggregate(BigInteger.Add);
+```
+
+### WithCancellation
+
+### WithMergeOptions
+
+### WithExecutionMode
+
+### ForAll
